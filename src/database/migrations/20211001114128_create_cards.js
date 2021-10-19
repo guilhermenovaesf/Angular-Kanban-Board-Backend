@@ -5,6 +5,7 @@ exports.up = function (knex) {
     table.string("pessoa").notNullable();
     table.string("conteudo").notNullable();
     table.string("prazo").notNullable();
+    table.string("status").notNullable();
   });
 };
 

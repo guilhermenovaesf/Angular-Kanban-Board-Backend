@@ -9,12 +9,13 @@ module.exports = {
 
   async create(req, res) {
     const { titulo, pessoa, conteudo, prazo } = req.body;
-
+    const status = "sprint";
     await connection("cards").insert({
       titulo,
       pessoa,
       conteudo,
       prazo,
+      status,
     });
 
     return res.json({ msg: "ok" });
@@ -28,13 +29,15 @@ module.exports = {
     return res.json(del);
   },
   async atualizar(req, res) {
-    var { titulo, pessoa, conteudo, prazo } = req.body;
+    var { titulo, pessoa, conteudo, prazo, status } = req.body;
+   
 
     const atualizar = {
       titulo,
       pessoa,
       conteudo,
       prazo,
+      status,
     };
 
     await connection("cards").where("id", req.params.id).update(atualizar);
